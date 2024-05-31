@@ -10,6 +10,10 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
+// Подключаем маршрут для проверки пользователей
+const customersRouter = require('./routes/customers');
+app.use('/api/customers', customersRouter);
+
 app.all("*", (req, res) => {
   res.status(404).json({ message: "Not found" });
 });
