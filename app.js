@@ -10,7 +10,12 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-// Подключаем маршрут для проверки пользователей
+const authRouter = require('./auth');
+app.use('/api/user/login', authRouter);
+
+const userRoutes = require('./userRoutes');
+app.use('/api', userRoutes);
+
 const customersRouter = require('./routes/customers');
 app.use('/api/customers', customersRouter);
 

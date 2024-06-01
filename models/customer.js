@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
-// Определяем схему пользователя
 const customerSchema = new mongoose.Schema({
   photo: {
     type: String,
@@ -14,6 +14,10 @@ const customerSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
+  },
+  password: {
+    type: String,
+    required: true
   },
   spent: {
     type: String,
@@ -33,7 +37,13 @@ const customerSchema = new mongoose.Schema({
   }
 });
 
-// Создаем модель Customer на основе схемы
+customerSchema.pre('save', async function(next) {
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
+});
+
 const Customer = mongoose.model('Customer', customerSchema);
 
 module.exports = Customer;
