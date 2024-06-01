@@ -10,10 +10,10 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-const authRouter = require('./auth');
+const authRouter = require('./routes/auth');
 app.use('/api/user/login', authRouter);
 
-const userRoutes = require('./userRoutes');
+const userRoutes = require('./routes/userRoutes');
 app.use('/api', userRoutes);
 
 const customersRouter = require('./routes/customers');
