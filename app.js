@@ -7,14 +7,15 @@ const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
-app.use(cors());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors({}));
 app.use(express.json());
 
 const authRouter = require('./routes/auth');
-app.use('/api/user/login', authRouter);
+app.use('/api/user', authRouter);
 
 const userRoutes = require('./routes/userRoutes');
-app.use('/api', userRoutes);
+app.use('/api/user/user-info', userRoutes);
 
 const customersRouter = require('./routes/customers');
 app.use('/api/customers', customersRouter);
