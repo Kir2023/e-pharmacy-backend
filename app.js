@@ -17,6 +17,9 @@ app.use('/api/user', authRouter);
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/user/user-info', userRoutes);
 
+const dashboardRouter = require('./routes/dashboard');
+app.use('/api/dashboard', dashboardRouter);
+
 const customersRouter = require('./routes/customers');
 app.use('/api/customers', customersRouter);
 

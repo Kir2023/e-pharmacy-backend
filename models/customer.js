@@ -31,6 +31,10 @@ const customerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  country: {
+    type: String, 
+    required: true
+  },
   register_date: {
     type: Date,
     required: true
