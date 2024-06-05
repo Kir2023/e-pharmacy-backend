@@ -13,12 +13,12 @@ router.get('/', async (req, res, next) => {
 
     const recentCustomers = await Customer.find()
       .sort({ createdAt: -1 })
-      .limit(10)
+      .limit(5)
       .select('name email country spent');
 
     const recentTransactions = await Transaction.find()
       .sort({ createdAt: -1 })
-      .limit(10)
+      .limit(6)
       .select('name amount type');
 
     res.json({
