@@ -11,17 +11,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({}));
 app.use(express.json());
 
-const authRouter = require('./routes/auth');
-app.use('/api/user', authRouter);
+const authRouter = require("./routes/auth");
+app.use("/api/user", authRouter);
 
-const userRoutes = require('./routes/userRoutes');
-app.use('/api/user/user-info', userRoutes);
+const userRoutes = require("./routes/userRoutes");
+app.use("/api/user/user-info", userRoutes);
 
-const dashboardRouter = require('./routes/dashboard');
-app.use('/api/dashboard', dashboardRouter);
+const dashboardRouter = require("./routes/dashboard");
+app.use("/api/dashboard", dashboardRouter);
 
-const customersRouter = require('./routes/customers');
-app.use('/api/customers', customersRouter);
+const ordersRouter = require("./routes/orders");
+app.use("/api/orders", ordersRouter);
+
+const customersRouter = require("./routes/customers");
+app.use("/api/customers", customersRouter);
 
 app.all("*", (req, res) => {
   res.status(404).json({ message: "Not found" });
