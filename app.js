@@ -23,6 +23,9 @@ app.use("/api/dashboard", dashboardRouter);
 const ordersRouter = require("./routes/orders");
 app.use("/api/orders", ordersRouter);
 
+const productsRouter = require("./routes/products");
+app.use("/api/products", productsRouter);
+
 const customersRouter = require("./routes/customers");
 app.use("/api/customers", customersRouter);
 
