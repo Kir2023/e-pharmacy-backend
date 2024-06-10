@@ -26,6 +26,9 @@ app.use("/api/orders", ordersRouter);
 const productsRouter = require("./routes/products");
 app.use("/api/products", productsRouter);
 
+const suppliersRouter = require("./routes/suppliers");
+app.use("/api/suppliers", suppliersRouter);
+
 const customersRouter = require("./routes/customers");
 app.use("/api/customers", customersRouter);
 
